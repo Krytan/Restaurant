@@ -27,14 +27,19 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
      private Intent intent;
      private EditText editable;
+     Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         editable = findViewById(R.id.editable);
-        Spinner spinner= findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter =ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item);
+
+
+        spinner= findViewById(R.id.spinner);
+
+
+        ArrayAdapter<CharSequence> adapter =ArrayAdapter.createFromResource(this, R.array.names, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
@@ -63,8 +68,11 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
             case R.id.btnsend:
                 String str = editable.getText().toString();
+                String str2 = spinner.getSelectedItem().toString();
+                String str3 = str2 + ": " +str;
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("message_key", str);
+                intent.putExtra("message_key", str3);
 
                 startActivity(intent);
 

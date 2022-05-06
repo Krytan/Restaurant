@@ -1,10 +1,17 @@
 <resources>
     <string name="app_name">Profile</string>
-    <string-array name="languages">
-        <item>C</item>
-        <item>C++</item>
-        <item>Java</item>
-        <item>JavaScript</item>
-        <item>VisualBasic</item>
+    <string-array name="names">
+        <item>Mother</item>
+        <item>Father</item>
+        <item>Cat</item>
+        <item>Dog</item>
+    </string-array>
+    <string-array name="colors">
+        <item>#ac12eb</item>
+        <item>#88ee40</item>
+        <item>#5d4e5c</item>
+        <item>#628bd9</item>
+        <item>#84215d</item>
+        <item>#a71ef5</item>
     </string-array>
 </resources>

@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
@@ -23,8 +24,6 @@ public class MainActivity<textView> extends AppCompatActivity implements View.On
     private static final int[] BUTTON_IDS = {
             R.id.btn1,
             R.id.btn2,
-            R.id.btn3,
-            R.id.btn4,
             R.id.btn5
 
     };
@@ -38,6 +37,7 @@ public class MainActivity<textView> extends AppCompatActivity implements View.On
 
         receiver_msg = findViewById(R.id.receiver);
 
+
         buttons = new ArrayList<Button>(BUTTON_IDS.length);
 
         // Here is a dynamic way to findviewbyid and set onclicklisterner on all buttons
@@ -49,7 +49,20 @@ public class MainActivity<textView> extends AppCompatActivity implements View.On
 
         Intent intent = getIntent();
         String str = intent.getStringExtra("message_key");
+        String str2 = intent.getStringExtra("color_key");
          receiver_msg.setText(str);
+         try {
+
+
+             receiver_msg.setBackgroundColor(Color.parseColor(str2));
+             receiver_msg.setText("Mother:edit");
+
+         }catch (Exception e) {
+             System.out.println("Oops!");
+         }
+
+
+
 
         launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -86,19 +99,13 @@ public class MainActivity<textView> extends AppCompatActivity implements View.On
                 break;
 
             case R.id.btn2:
-
-                Toast.makeText(this, "button2 pressed", Toast.LENGTH_SHORT).show();
+                String str = receiver_msg.getText().toString();
+                Intent intent2 = new Intent(getApplicationContext(), ThirdActivity.class);
+                intent2.putExtra("fromMain", str);
+                startActivity(intent2);
+                //Toast.makeText(this, "button1 pressed", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.btn3:
-
-                Toast.makeText(this, "button3 pressed", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.btn4:
-
-                Toast.makeText(this, "button4 pressed", Toast.LENGTH_SHORT).show();
-                break;
 
             case R.id.btn5:
 
